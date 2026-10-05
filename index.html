@@ -91,10 +91,9 @@ button{font:inherit;color:inherit}
   font-variation-settings:"wdth" 82, "opsz" 96;
   font-size:clamp(3.1rem, min(10.5vw, 14.5vh), 9.6rem);
   line-height:.86;letter-spacing:-.035em;max-width:9ch;
-  transition:color .4s;
 }
 .hero h1 span{display:block}
-.lede{margin:clamp(14px,2.4vh,26px) 0 0;max-width:40ch;font-size:clamp(1.05rem, 1.6vw, 1.3rem);line-height:1.45;color:var(--hero-ink);transition:color .4s;text-wrap:pretty}
+.lede{margin:clamp(14px,2.4vh,26px) 0 0;max-width:40ch;font-size:clamp(1.05rem, 1.6vw, 1.3rem);line-height:1.45;color:var(--hero-ink);text-wrap:pretty}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;max-width:560px}
 .fact{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;padding:6px 12px 6px 10px;border-radius:999px;background:rgba(244,249,241,.78);color:var(--ink);border:1px solid rgba(18,53,36,.12);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .fact i{width:8px;height:8px;border-radius:50%;background:var(--leaf);flex:none}
@@ -946,7 +945,7 @@ const hero = $('#hero');
 const cv = $('#scene');
 const ctx = cv.getContext('2d');
 const rT = $('#rTime'), rW = $('#rWind'), oT = $('#oTime'), oW = $('#oWind');
-const S = { t: reduce ? 11.75 : 4.9, slider: 9, gust: 0, v: 9, soc: 0.45, drag: false, playing: false, playStart: 0, playFrom: 0, intro: !reduce, introStart: 0, visible: true, dirty: true, clock: 0 };
+const S = { t: reduce ? 11.75 : 5.5, slider: 9, gust: 0, v: 9, soc: 0.45, drag: false, playing: false, playStart: 0, playFrom: 0, intro: !reduce, introStart: 0, visible: true, dirty: true, clock: 0 };
 let W = 0, H = 0, DPR = 1, horizon = 0, small = false;
 let farP, midP, nearP, turbines = [], panels = [], towers = [], city = [], stars = [], clouds = [], paths = {}, sub = {}, battery = {};
 const C = {
@@ -1117,7 +1116,7 @@ function step(now) {
   if (S.intro) {
     if (!S.introStart) S.introStart = now;
     const k = clamp((now - S.introStart) / 2800, 0, 1), e = 1 - Math.pow(1 - k, 3);
-    S.t = lerp(4.9, S.introTo || 11.75, e); S.dirty = true;
+    S.t = lerp(5.5, S.introTo || 11.75, e); S.dirty = true;
     if (k >= 1) { S.intro = false; showHint(); }
   }
   if (S.playing) {
