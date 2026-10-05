@@ -1311,8 +1311,8 @@ function drawDuck() {
 const hint = $('#hint');
 let hintDone = false, hintTimer = 0;
 function placeHint() {
-  if (!S.sun || hintDone) return;
-  const [x, y] = S.sun, off = 62, wHint = hint.offsetWidth || 190;
+  if (hintDone || !W) return;
+  const [x, y] = sunPos(S.intro ? (S.introTo || 11.75) : S.t), off = 62, wHint = hint.offsetWidth || 190;
   const flip = x + off + wHint > W - 16;
   hint.classList.toggle('flip', flip);
   hint.style.left = (flip ? x - off - wHint : x + off) + 'px';
